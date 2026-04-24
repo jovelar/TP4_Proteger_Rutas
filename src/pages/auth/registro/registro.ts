@@ -22,12 +22,14 @@ form.addEventListener("submit", (e: SubmitEvent) => {
   alert("Registro satisfactorio!")
   const parseUser = JSON.stringify(user);
   localStorage.setItem("userData", parseUser);
-  
+
+  /*
     if (valueRol === "admin") {
     navigate("/src/pages/admin/home/home.html");
   } else if (valueRol === "client") {
     navigate("/src/pages/client/home/home.html");
-  }
+  }*/
+ navigate("/src/pages/auth/login/login.html")
   
   }
   else if(valueEmail==""){
