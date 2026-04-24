@@ -8,7 +8,30 @@
 </head>
 
 <body>
-    <h1>Hola desde el registro</h1>
+    <h1>Registro</h1>
+    <form id="formRegistro">
+        <div>
+            <Label>Nombre</Label>
+            <input type="email" id="inputEmail" placeholder="email@email.com">
+        </div>
+        <br>
+        <div>
+            <label>Contraseña</label>
+            <input type="password" id="inputPassword" placeholder="*******">
+        </div>
+        <br>
+        <div>
+            <label for="rol">Rol</label>
+            <select name="rol" id="rol">
+                <option value="">Seleccione un rol</option>
+                <option value="client">Cliente</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit">REGISTRAR</button>
+    </form>
+    <script type="module" src="./registro.ts"></script>
 </body>
 
 </html>
