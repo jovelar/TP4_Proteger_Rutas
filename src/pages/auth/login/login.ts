@@ -26,6 +26,8 @@ form.addEventListener("submit", (e: SubmitEvent) => {
   };
 
   const parseUser = JSON.stringify(user);
+
+  //EVALUAR SI EXISTE PRIMERO ANTES DE USAR SETITEM
   localStorage.setItem("userData", parseUser);
 
 });
