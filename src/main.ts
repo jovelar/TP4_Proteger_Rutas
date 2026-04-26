@@ -2,27 +2,6 @@ import { navigate } from "./utils/navigate";
 import { checkAuhtUser } from "./utils/auth";
 import { getUSer } from "./utils/localStorage";
 
-
-/*
-export const routeGuard=()=>{
-    const usuario=localStorage.getItem("userData");
-    //const locacion=window.location.pathname;
-
-    if(usuario){
-        const datos=JSON.parse(usuario);
-        if(datos.rol=="admin"){
-            navigate("src/pages/admin/home/home.html");
-        }else{
-            navigate("src/pages/client/home/home.html");
-        }
-
-    }else{
-        navigate("src/pages/auth/login/login.html");
-    }
-    return;
-}
-*/
-
 /*
 export const routeGuard=(urlDef: string, urlDest: string)=>{
     const usuario=getUSer();
