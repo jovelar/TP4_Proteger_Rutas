@@ -1,6 +1,7 @@
 import type { IUser } from "../../../types/IUser";
 import type { Rol } from "../../../types/Rol";
 import { navigate } from "../../../utils/navigate";
+import { saveUser } from "../../../utils/localStorage";
 
 const form = document.getElementById("formRegistro") as HTMLFormElement;
 const inputEmail = document.getElementById("inputEmail") as HTMLInputElement;
@@ -16,12 +17,14 @@ form.addEventListener("submit", (e: SubmitEvent) => {
   if(valueEmail && valuePassword && valueRol){
     const user: IUser = {
     email: valueEmail,
+    password:valuePassword,
     role: valueRol,
     loggedIn: true,
   };
   alert("Registro satisfactorio!")
-  const parseUser = JSON.stringify(user);
-  localStorage.setItem("userData", parseUser);
+  saveUser(user);
+  //const parseUser = JSON.stringify(user);
+  //localStorage.setItem("userData", parseUser);
 
   /*
     if (valueRol === "admin") {
