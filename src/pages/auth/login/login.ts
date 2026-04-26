@@ -17,7 +17,7 @@ form.addEventListener("submit", (e: SubmitEvent) => {
   const usuario=getUSer();
   if(usuario){
       const datosUsuario=JSON.parse(usuario);
-
+      
       if(datosUsuario.email==valueEmail && datosUsuario.password==valuePassword){
           if (datosUsuario.role === "admin") {
             navigate("/src/pages/admin/home/home.html");
