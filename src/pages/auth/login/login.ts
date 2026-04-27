@@ -19,6 +19,8 @@ form.addEventListener("submit", (e: SubmitEvent) => {
       const datosUsuario= JSON.parse(usuario);
       let i =0;
       while(i<datosUsuario.length){
+
+        //si el email y la contraseña estan bien
         if(datosUsuario[i].email==valueEmail && datosUsuario[i].password==valuePassword){
           console.log("usuario encontrado");
           if (datosUsuario[i].role === "admin") {
@@ -27,9 +29,18 @@ form.addEventListener("submit", (e: SubmitEvent) => {
             navigate("/src/pages/client/home/home.html");
           }
           break;
+
+        //si pone mal la contraseña
+        }else if(datosUsuario[i].email==valueEmail && datosUsuario[i].password!=valuePassword){
+          alert("Contraseña Invalida");
+          break;
         }
         i++;
       }
+      
+  //si el email no existe o no lo encuentra
+  }else{
+    alert("Usuario no encontrado!");
   }
 
 });
