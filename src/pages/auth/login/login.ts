@@ -16,38 +16,20 @@ form.addEventListener("submit", (e: SubmitEvent) => {
   
   const usuario=getUSer();
   if(usuario){
-      const datosUsuario=JSON.parse(usuario);
-      
-      if(datosUsuario.email==valueEmail && datosUsuario.password==valuePassword){
-          if (datosUsuario.role === "admin") {
+      const datosUsuario= JSON.parse(usuario);
+      let i =0;
+      while(i<datosUsuario.length){
+        if(datosUsuario[i].email==valueEmail && datosUsuario[i].password==valuePassword){
+          console.log("usuario encontrado");
+          if (datosUsuario[i].role === "admin") {
             navigate("/src/pages/admin/home/home.html");
-          } else if (datosUsuario.role === "client") {
+          } else if (datosUsuario[i].role === "client") {
             navigate("/src/pages/client/home/home.html");
           }
+          break;
+        }
+        i++;
       }
   }
-
-  
-
-    /*
-  if (valueRol === "admin") {
-    navigate("/src/pages/admin/home/home.html");
-  } else if (valueRol === "client") {
-    navigate("/src/pages/client/home/home.html");
-  }
-  
-
-  const user: IUser = {
-    email: valueEmail,
-    password:valuePassword,
-    role: valueRol,
-    loggedIn: true,
-  };
-
-  const parseUser = JSON.stringify(user);
-  
-  //EVALUAR SI EXISTE PRIMERO ANTES DE USAR SETITEM
-  localStorage.setItem("userData", parseUser);
-  */
 
 });

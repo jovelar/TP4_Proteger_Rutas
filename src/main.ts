@@ -2,33 +2,13 @@ import { navigate } from "./utils/navigate";
 import { checkAuhtUser } from "./utils/auth";
 import { getUSer } from "./utils/localStorage";
 
-/*
-export const routeGuard=(urlDef: string, urlDest: string)=>{
-    const usuario=getUSer();
-    const urlActual=window.location.pathname;
-
-    if(usuario){
-        const datosUsuario=JSON.parse(usuario);
-
-        if((urlActual.includes("admin") && datosUsuario.role!="admin")||(urlActual.includes("client") && datosUsuario.role!="client")){
-            navigate(urlDef);
-            return;
-        }
-
-        checkAuhtUser(urlDef,urlDest,datosUsuario.role);
-    }else{
-        navigate(urlDef);
-    }
-}
-*/
-
+//urlDef es el link a login, en caso de que no este logeado 
 export const routeGuard = (urlDef: string, urlDest: string) => {
     const usuario = getUSer();
     const urlActual = window.location.pathname;
 
-    // 1. SI NO HAY USUARIO
+    // ver si no hay un usuario
     if (!usuario) {
-        // Solo navega al login si NO estás ya en el login
         if (!urlActual.includes("login.html")) {
             navigate(urlDef);
         }
@@ -60,7 +40,7 @@ export const routeGuard = (urlDef: string, urlDest: string) => {
         if (datosUsuario.role === "admin") {
             navigate("/src/pages/admin/home/home.html");
         } else {
-            navigate("/src/pages/client/home/home.html");
+            navigate("/src/pages/client/home/home.html"); 
         }
         return;
     }

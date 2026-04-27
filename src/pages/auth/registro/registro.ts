@@ -1,7 +1,7 @@
 import type { IUser } from "../../../types/IUser";
 import type { Rol } from "../../../types/Rol";
 import { navigate } from "../../../utils/navigate";
-import { saveUser } from "../../../utils/localStorage";
+import { getUSer, saveUser } from "../../../utils/localStorage";
 
 const form = document.getElementById("formRegistro") as HTMLFormElement;
 const inputEmail = document.getElementById("inputEmail") as HTMLInputElement;
@@ -21,18 +21,29 @@ form.addEventListener("submit", (e: SubmitEvent) => {
     role: valueRol,
     loggedIn: true,
   };
-  alert("Registro satisfactorio!")
-  saveUser(user);
-  //const parseUser = JSON.stringify(user);
-  //localStorage.setItem("userData", parseUser);
 
-  /*
-    if (valueRol === "admin") {
-    navigate("/src/pages/admin/home/home.html");
-  } else if (valueRol === "client") {
-    navigate("/src/pages/client/home/home.html");
-  }*/
- navigate("/src/pages/auth/login/login.html")
+    let credencialesJSON = getUSer();
+    let temp = credencialesJSON ? JSON.parse(credencialesJSON) : [];
+    // Forzamos que sea un arreglo para que aparezca .length
+    let credenciales = Array.isArray(temp) ? temp : [];
+
+    let i=0;
+    let encontrado=0;
+    while( i < credenciales.length){
+      if(credenciales[i].email==user.email){
+        alert("La cuenta ya existe!")
+        encontrado=1;
+      }
+      i++;
+    }
+    
+    if(encontrado==0){
+      credenciales.push(user);
+      saveUser(credenciales);
+      alert("Registro satisfactorio!")
+  
+      navigate("/src/pages/auth/login/login.html")
+    }
   
   }
   else if(valueEmail==""){
