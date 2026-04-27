@@ -3,28 +3,30 @@ import type { Rol } from "../types/Rol";
 import { getUSer, removeUser } from "./localStorage";
 import { navigate } from "./navigate";
 
+
+//redireccion1 seria la url en caso de que haya error, es decir, devuelve a login.html
+//redireccion2 es su pagina correcta,
 export const checkAuthUser = (
   redireccion1: string,
   redireccion2: string,
   rol: Rol
 ) => {
-  console.log("comienzo de checkeo");
-
   const user = getUSer();
+  const pathActual = window.location.pathname;
 
+  
   if (!user) {
-    console.log("no existe en local");
-    navigate(redireccion1);
+    if (!pathActual.includes(redireccion1)) navigate(redireccion1);
     return;
-  } else {
-    console.log("existe pero no tiene el rol necesario");
+  }
 
-    console.log(redireccion2);
-    const parseUser: IUser = JSON.parse(user);
-    if (parseUser.role !== rol) {
-      navigate(redireccion1);
-      return;
-    }
+  const parseUser: IUser = JSON.parse(user);
+
+  if (parseUser.role !== rol) {
+    if (!pathActual.includes(redireccion1)) navigate(redireccion1);
+  } else {
+    // solo aplica navigate si no se encuentra actualmente en la pagina correspondiente
+    if (!pathActual.includes(redireccion2)) navigate(redireccion2);
   }
 };
 

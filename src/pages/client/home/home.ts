@@ -5,7 +5,7 @@ import { routeGuard } from "../../../main";
 //donde deberia ir el guard
 //routeGuard();
 
-routeGuard();
+routeGuard("/src/pages/auth/login/login.html","src/pages/client/home/home.html","client");
 
 const buttonLogout = document.getElementById(
   "logoutButton"

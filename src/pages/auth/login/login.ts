@@ -1,18 +1,14 @@
-//import type { IUser } from "../../../types/IUser";
-//import type { Rol } from "../../../types/Rol";
 import { navigate } from "../../../utils/navigate";
 import {getUSers, saveUser } from "../../../utils/localStorage";
 
 const form = document.getElementById("form") as HTMLFormElement;
 const inputEmail = document.getElementById("email") as HTMLInputElement;
 const inputPassword = document.getElementById("password") as HTMLInputElement;
-//const selectRol = document.getElementById("rol") as HTMLSelectElement;
 
 form.addEventListener("submit", (e: SubmitEvent) => {
   e.preventDefault();
   const valueEmail = inputEmail.value;
   const valuePassword = inputPassword.value;
-  //const valueRol = selectRol.value as Rol;
 
   const usuario = getUSers();
   if (usuario) {
@@ -43,11 +39,11 @@ form.addEventListener("submit", (e: SubmitEvent) => {
       }
       i++;
     }
-
+    //si no encuentra al usuario
     if (encontrado == false) {
       alert("Usuario no encontrado");
     }
-    //si el email no existe o no lo encuentra
+    //si la lista de usuario esta vacia
   } else {
     alert("No existen usuarios!");
   }

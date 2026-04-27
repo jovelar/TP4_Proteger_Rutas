@@ -1,7 +1,7 @@
 import {logout } from "../../../utils/auth";
 import { routeGuard } from "../../../main";
 
-routeGuard();
+routeGuard("/src/pages/auth/login/login.html","/src/pages/admin/home/home.html","admin");
 
 const buttonLogout = document.getElementById("logoutButton") as HTMLButtonElement;
 buttonLogout?.addEventListener("click", () => {
