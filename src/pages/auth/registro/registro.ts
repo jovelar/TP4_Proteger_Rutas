@@ -23,7 +23,7 @@ form.addEventListener("submit", (e: SubmitEvent) => {
 
     let credencialesJSON = getUSers();
     let temp = credencialesJSON ? JSON.parse(credencialesJSON) : [];
-    // Forzamos que sea un arreglo para que aparezca .length
+    // fuerza para que sea un arreglo para que aparezca .length
     let credenciales = Array.isArray(temp) ? temp : [];
 
     let i=0;
